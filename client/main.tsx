@@ -10,10 +10,8 @@ import rootReducer from './main/reducer';
 
 const initialState = {};
 
-const store: IStore<any> = createStore(rootReducer, initialState);
-// window['devToolsExtension'] && window['devToolsExtension']()
-
-typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : f => f
+const enhancer = window['devToolsExtension'] ? window['devToolsExtension']()(createStore) : createStore;
+const store: IStore<any> = enhancer(rootReducer, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
