@@ -11,6 +11,9 @@ import rootReducer from './main/reducer';
 const initialState = {};
 
 const store: IStore<any> = createStore(rootReducer, initialState);
+// window['devToolsExtension'] && window['devToolsExtension']()
+
+typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : f => f
 
 ReactDOM.render(
   <Provider store={store}>
