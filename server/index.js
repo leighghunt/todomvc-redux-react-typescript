@@ -21,6 +21,7 @@ module.exports = function(options) {
 
   var app = express();
 
+  app.use('/api/departments', require('./api/department'));
   // serve the static assets
   app.use("/_assets", express.static(path.join(__dirname, "..", "build", "public"), {
     maxAge: "200d" // We can cache them as they include hashes
