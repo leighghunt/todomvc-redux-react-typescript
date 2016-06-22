@@ -29,6 +29,8 @@
     "redux-actions": "0.10.0",
     "serve-static": "1.10.0",
     "todomvc-app-css": "2.0.1",
+    "winston": "2.2.0",
+    "winston-papertrail": "1.0.2",
     "yargs": "3.29.0"
   },
   "devDependencies": {

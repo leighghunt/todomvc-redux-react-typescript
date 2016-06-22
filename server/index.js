@@ -3,6 +3,8 @@ var express = require('express');
 var http = require('http');
 var serveStatic = require('serve-static');
 var config = require('./config');
+var winston = require('winston');
+var papertrail = require('winston-papertrail').Papertrail;
 
 module.exports = function(options) {
   var Renderer = require("../config/SimpleRenderer.js");
@@ -46,7 +48,19 @@ module.exports = function(options) {
 
   var server = http.createServer(app);
 
+
+  winston.add(winston.transports.Papertrail, {
+  			host: 'logs4.papertrailapp.com',
+  			port: 40894,
+        program: 'todomvc-redux-react-typescript'
+  //      hostname: 'BMS-Macbook-Pro',
+  		}
+  );
+
+
   server.listen(config.port, function () {
     console.log('listening on http://localhost:' + config.port);
+    winston.info('listening on http://localhost:' + config.port);
+
   });
 };
