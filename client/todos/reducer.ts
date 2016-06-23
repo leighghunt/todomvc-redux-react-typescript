@@ -24,31 +24,9 @@ const initialState: IState = {
   departments:[]
 };
 
-if (typeof Object.assign != 'function') {
-  Object.assign = function(target) {
-    'use strict';
-    if (target == null) {
-      throw new TypeError('Cannot convert undefined or null to object');
-    }
-
-    target = Object(target);
-    for (var index = 1; index < arguments.length; index++) {
-      var source = arguments[index];
-      if (source != null) {
-        for (var key in source) {
-          if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-          }
-        }
-      }
-    }
-    return target;
-  };
-}
-
 export default handleActions<IState>({
   [ADD_TODO]: (state: IState, action: Action): IState => {
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
         todos: [{
@@ -60,7 +38,7 @@ export default handleActions<IState>({
   },
 
   [DELETE_TODO]: (state: IState, action: Action): IState => {
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
       todos: state.todos.filter(todo =>
@@ -69,7 +47,7 @@ export default handleActions<IState>({
   },
 
   [EDIT_TODO]: (state: IState, action: Action): IState => {
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
         todos: state.todos.map(todo =>
@@ -81,7 +59,7 @@ export default handleActions<IState>({
   },
 
   [COMPLETE_TODO]: (state: IState, action: Action): IState => {
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
         todos: state.todos.map(todo =>
@@ -94,7 +72,7 @@ export default handleActions<IState>({
 
   [COMPLETE_ALL]: (state: IState, action: Action): IState => {
     const areAllMarked = state.todos.every(todo => todo.completed);
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
         todos: state.todos.map(todo => assign({}, todo, {
@@ -104,7 +82,7 @@ export default handleActions<IState>({
   },
 
   [CLEAR_COMPLETED]: (state: IState, action: Action): IState => {
-    return Object.assign({},
+    return <IState>assign({},
       state,
       {
         todos: state.todos.filter(todo => todo.completed === false)
