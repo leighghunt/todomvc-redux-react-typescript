@@ -4,4 +4,12 @@ export type Todo = {
   completed: boolean;
 };
 
-export type IState = Todo[];
+export type Department = {
+  name: string,
+  description: string
+}
+
+export type IState = {
+  todos: Todo[],
+  departments: Department[]
+}
