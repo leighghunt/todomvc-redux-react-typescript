@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-import todos from '../app';
+import { todos, departments } from '../app';
 
 const rootReducer = combineReducers({
-  todos
+  todos,
+  departments
 });
 
 export default rootReducer;

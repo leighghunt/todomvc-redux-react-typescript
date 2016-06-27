@@ -3,3 +3,9 @@ export type Todo = {
   text: string;
   completed: boolean;
 };
+
+export type Department = {
+  id?: number;
+  name: string;
+  description: string;
+};
