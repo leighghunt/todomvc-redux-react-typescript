@@ -12,7 +12,7 @@ import {
   completeAll,
   completeTodo,
   deleteTodo
-} from '../../todos';
+} from '../../app';
 
 interface AppProps {
   todos: model.Todo[];
