@@ -1,7 +1,7 @@
 import { assign } from 'lodash';
 import { handleActions, Action } from 'redux-actions';
 
-import { Todo, IState } from '../model';
+import { Todo } from '../model';
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -11,14 +11,14 @@ import {
   CLEAR_COMPLETED
 } from '../actions/todo-actions';
 
-const initialState: IState = [<Todo>{
+const initialState: Todo[] = [<Todo>{
   text: 'Use Redux with TypeScript',
   completed: false,
   id: 0
 }];
 
-export default handleActions<IState>({
-  [ADD_TODO]: (state: IState, action: Action): IState => {
+export default handleActions<Todo[]>({
+  [ADD_TODO]: (state: Todo[], action: Action): Todo[] => {
     return [{
       id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
       completed: action.payload.completed,
@@ -26,36 +26,36 @@ export default handleActions<IState>({
     }, ...state];
   },
 
-  [DELETE_TODO]: (state: IState, action: Action): IState => {
+  [DELETE_TODO]: (state: Todo[], action: Action): Todo[] => {
     return state.filter(todo =>
       todo.id !== action.payload.id
     );
   },
 
-  [EDIT_TODO]: (state: IState, action: Action): IState => {
-    return <IState>state.map(todo =>
+  [EDIT_TODO]: (state: Todo[], action: Action): Todo[] => {
+    return <Todo[]>state.map(todo =>
       todo.id === action.payload.id
         ? assign(<Todo>{}, todo, { text: action.payload.text })
         : todo
     );
   },
 
-  [COMPLETE_TODO]: (state: IState, action: Action): IState => {
-    return <IState>state.map(todo =>
+  [COMPLETE_TODO]: (state: Todo[], action: Action): Todo[] => {
+    return <Todo[]>state.map(todo =>
       todo.id === action.payload.id ?
         assign({}, todo, { completed: !todo.completed }) :
         todo
     );
   },
 
-  [COMPLETE_ALL]: (state: IState, action: Action): IState => {
+  [COMPLETE_ALL]: (state: Todo[], action: Action): Todo[] => {
     const areAllMarked = state.every(todo => todo.completed);
-    return <IState>state.map(todo => assign({}, todo, {
+    return <Todo[]>state.map(todo => assign({}, todo, {
       completed: !areAllMarked
     }));
   },
 
-  [CLEAR_COMPLETED]: (state: IState, action: Action): IState => {
+  [CLEAR_COMPLETED]: (state: Todo[], action: Action): Todo[] => {
     return state.filter(todo => todo.completed === false);
   }
 }, initialState);
