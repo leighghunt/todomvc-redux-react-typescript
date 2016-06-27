@@ -5,23 +5,28 @@ import * as React from 'react';
 import {
   Header,
   MainSection,
+  DepartmentSection,
   model,
+  addDepartment,
   addTodo,
+  editDepartment,
   editTodo,
   clearCompleted,
   completeAll,
   completeTodo,
+  deleteDepartment,
   deleteTodo
 } from '../../app';
 
 interface AppProps {
   todos: model.Todo[];
+  departments: model.Department[];
   dispatch: IDispatch;
 }
 
 class App extends React.Component<AppProps, void> {
   render() {
-    const { todos, dispatch } = this.props;
+    const { todos, departments, dispatch } = this.props;
 
     return (
       <div className="todoapp">
@@ -33,12 +38,15 @@ class App extends React.Component<AppProps, void> {
             completeTodo={(t: model.Todo) => dispatch(completeTodo(t))}
             clearCompleted={() => dispatch(clearCompleted())}
             completeAll={() => dispatch(completeAll())}/>
+        <DepartmentSection
+            departments={departments}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  departments: state.departments,
   todos: state.todos
 });
 
