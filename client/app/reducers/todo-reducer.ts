@@ -1,7 +1,7 @@
 import { assign } from 'lodash';
 import { handleActions, Action } from 'redux-actions';
 
-import { Todo, IState } from './model';
+import { Todo, IState } from '../model';
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -9,7 +9,7 @@ import {
   COMPLETE_TODO,
   COMPLETE_ALL,
   CLEAR_COMPLETED
-} from './actions/todo-actions';
+} from '../actions/todo-actions';
 
 const initialState: IState = [<Todo>{
   text: 'Use Redux with TypeScript',

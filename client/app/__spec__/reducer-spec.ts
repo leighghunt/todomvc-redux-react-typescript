@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import reducer from '../reducer';
+import todoReducer from '../reducers/todo-reducer';
 import { Todo } from '../model';
 
 import {
@@ -16,7 +16,7 @@ describe('todo reducer', () => {
   it('handles add', () => {
     let state: Todo[] = [{ id: 0, text: '', completed: true }];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: ADD_TODO,
       payload: { text: 'hello', completed: false }
     });
@@ -29,7 +29,7 @@ describe('todo reducer', () => {
   it('handles delete', () => {
     let state: Todo[] = [{ id: 1, text: '', completed: false }];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: DELETE_TODO,
       payload: { id: 1 }
     });
@@ -40,7 +40,7 @@ describe('todo reducer', () => {
   it('handles edit', () => {
     let state: Todo[] = [{ id: 1, text: '', completed: false }];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: EDIT_TODO,
       payload: { id: 1, text: 'hello' }
     });
@@ -56,7 +56,7 @@ describe('todo reducer', () => {
       { id: 1, text: '', completed: false }
     ];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: COMPLETE_TODO,
       payload: { id: 1 }
     });
@@ -73,7 +73,7 @@ describe('todo reducer', () => {
       { id: 3, text: '', completed: false }
     ];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: COMPLETE_ALL,
       payload: {}
     });
@@ -84,7 +84,7 @@ describe('todo reducer', () => {
       { id: 3, text: '', completed: true }
     ]);
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: COMPLETE_ALL,
       payload: {}
     });
@@ -102,7 +102,7 @@ describe('todo reducer', () => {
       { id: 2, text: '', completed: true }
     ];
 
-    state = reducer(state, {
+    state = todoReducer(state, {
       type: CLEAR_COMPLETED,
       payload: {}
     });

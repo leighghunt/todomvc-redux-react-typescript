@@ -6,5 +6,5 @@ export { default as TodoTextInput } from './components/TodoTextInput';
 export * from './actions/todo-actions';
 import * as model from './model';
 export { model };
-import reducer from './reducer';
-export default reducer;
+import todoReducer from './reducers/todo-reducer';
+export default todoReducer;
