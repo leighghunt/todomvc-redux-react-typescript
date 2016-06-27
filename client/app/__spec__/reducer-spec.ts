@@ -10,7 +10,7 @@ import {
   COMPLETE_TODO,
   COMPLETE_ALL,
   CLEAR_COMPLETED
-} from '../actions';
+} from '../actions/todo-actions';
 
 describe('todo reducer', () => {
   it('handles add', () => {

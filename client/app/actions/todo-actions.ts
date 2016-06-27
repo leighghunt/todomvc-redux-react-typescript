@@ -1,7 +1,7 @@
 import { createAction, Action } from 'redux-actions';
 import { assign } from 'lodash';
 
-import { Todo } from './model';
+import { Todo } from '../model';
 
 export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
