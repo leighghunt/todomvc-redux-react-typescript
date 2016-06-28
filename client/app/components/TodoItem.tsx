@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import { Todo } from '../model';
-import TodoTextInput from './TodoTextInput';
+import TextInput from './TextInput';
 
 interface TodoItemProps {
   todo: Todo;
@@ -42,7 +42,7 @@ class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
     let element;
     if (this.state.editing) {
       element = (
-        <TodoTextInput text={todo.text}
+        <TextInput text={todo.text}
                        editing={this.state.editing}
                        onSave={(text) => this.handleSave(todo, text)}/>
       );

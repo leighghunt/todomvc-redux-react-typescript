@@ -6,6 +6,7 @@ import {
   Header,
   MainSection,
   DepartmentSection,
+  DepartmentHeader,
   model,
   addDepartment,
   addTodo,
@@ -38,8 +39,9 @@ class App extends React.Component<AppProps, void> {
             completeTodo={(t: model.Todo) => dispatch(completeTodo(t))}
             clearCompleted={() => dispatch(clearCompleted())}
             completeAll={() => dispatch(completeAll())}/>
-        <DepartmentSection
-            departments={departments}/>
+            <DepartmentHeader addDepartment={(name: string) => dispatch(addDepartment(name))} />
+            <DepartmentSection
+                departments={departments}/>
       </div>
     );
   }

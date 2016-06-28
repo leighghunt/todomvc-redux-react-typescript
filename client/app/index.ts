@@ -1,9 +1,10 @@
 export { default as Footer } from './components/Footer';
 export { default as Header } from './components/Header';
+export { default as DepartmentHeader } from './components/DepartmentHeader';
 export { default as MainSection } from './components/MainSection';
 export { default as DepartmentSection } from './components/DepartmentSection';
 export { default as TodoItem } from './components/TodoItem';
-export { default as TodoTextInput } from './components/TodoTextInput';
+export { default as TextInput } from './components/TextInput';
 export * from './actions/todo-actions';
 export * from './actions/department-actions';
 import * as model from './model';
